@@ -1,0 +1,11 @@
+{
+  "preset": "airbnb",
+  "esprima": "esprima-fb",
+  "fileExtensions": [".js", ".jsx"],
+  "requireTrailingComma": false,
+  "excludeFiles": [
+    "node_modules/**",
+    "build/**"
+  ],
+  "esnext": true
+}
