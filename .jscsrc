@@ -3,6 +3,7 @@
   "esprima": "esprima-fb",
   "fileExtensions": [".js", ".jsx"],
   "requireTrailingComma": false,
+  "validateQuoteMarks": { "mark": "'", "escape": true, "ignoreJSX": true },
   "excludeFiles": [
     "node_modules/**",
     "build/**"
