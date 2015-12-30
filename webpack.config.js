@@ -11,16 +11,24 @@ const PATHS = {
   build: path.join(__dirname, 'build')
 };
 
+// Pass TARGET to Babel to allow control in .babelrc
+process.env.BABEL_ENV = TARGET;
+
 const common = {
   // Entry accepts a path or an object of entries.
   entry: PATHS.app,
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   output: {
     path: PATHS.build,
     filename: 'bundle.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Kanban app'
+      template: 'node_modules/html-webpack-template/index.html',
+      title: 'Kanban app',
+      appMountId: 'app'
     })
   ],
   module: {
@@ -31,6 +39,11 @@ const common = {
         loaders: ['style', 'css'],
 
         // Include accepts either a path or an array of paths.
+        include: PATHS.app
+      },
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel'],
         include: PATHS.app
       }
     ]
