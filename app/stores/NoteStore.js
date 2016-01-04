@@ -18,6 +18,8 @@ class NoteStore {
     this.setState({
       notes: notes.concat(note)
     });
+
+    return note;
   }
 
   update(updatedNote) {
@@ -36,6 +38,12 @@ class NoteStore {
     this.setState({
       notes: this.notes.filter((note) => note.id !== id)
     });
+  }
+
+  get(ids) {
+    return (ids || []).map(
+      (id) => this.notes.filter((note) => note.id === id)
+    ).filter((a) => a).map((a) => a[0]);
   }
 }
 

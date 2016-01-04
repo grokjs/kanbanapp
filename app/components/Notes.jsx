@@ -1,5 +1,5 @@
 import React from 'react';
-import Note from './Note';
+import Editable from './Editable';
 
 export default ({notes, onEdit, onDelete}) => {
   return (
@@ -7,8 +7,10 @@ export default ({notes, onEdit, onDelete}) => {
       {notes.map((note) => {
         return (
           <li className="note" key={note.id}>
-            <Note
-              task={note.task}
+            <Editable
+              edinting={note.editing}
+              value={note.task}
+              onValueClick={this.props.onValueClick.bind(null, note.id)}
               onEdit={onEdit.bind(null, note.id)}
               onDelete={onDelete.bind(null, note.id)}
               />
